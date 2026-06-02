@@ -10,7 +10,7 @@ int main(void){
 	printf("<title>Course - Waph</title>\n");
 
 	printf("</head>\n");
-
+					
 	printf("<body>");
 
 	printf("<h1>My name is Viplav Nagpal</h1>\n");
