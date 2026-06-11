@@ -22,7 +22,9 @@
         #response { background-color: #ff9800; } /* Orange */
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+
+    </script>
 
 </head>
 <body>
@@ -106,6 +108,7 @@
         <input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
         <input class = "button round" type = "button" value ="JQuery Ajax GET Echo" onclick = "JQueryAjax()">
         <input class = "button round" type = "button" value ="JQuery Ajax POST Echo" onclick = "JQueryAjaxPost()">
+        <input class = "button round" type = "button" value = "guess Age" onclick = "guessAge($('#data').val())">
         
         <div id="response"></div>
         
@@ -149,6 +152,18 @@
         		);
         		$("data").val("");
         	}
+
+        	async function guessAge(name){
+        		const response = await fetch("https://api.agify.io/?name="+name);
+        		const result = await response.json();
+        		$("#response").html("Hi" + name + ", you age should be " + result.age);
+        	}
+
+        	$.get("https://v2.jokeapi.dev/joke/programming?type=single",
+    			function(result){
+    			console.log("From jokeAPI: " + JSON.stringify(result));
+    			$("#response").html("A programming joke of the day: " + result.joke);
+    		})
         </script>
     </div>
 
