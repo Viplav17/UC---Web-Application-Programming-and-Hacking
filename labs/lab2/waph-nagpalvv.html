@@ -21,19 +21,22 @@
         .round { border-radius: 8px; }
         #response { background-color: #ff9800; } /* Orange */
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
-<div class="container wrapper">
+<div>
 
-    <div id="top">
+    <div id="top" class="container wrapper">
         <h1>Web Application Programming and Hacking</h1>
         <h2>Front-end Web Development Lab</h2>
         <h3>Instructor: Dr. Phu Phung</h3>
     </div>
 
-    <div class="wrapper">
-        <div id="menubar">
+    <div >
+        <div id="menubar" class="wrapper">
             <h3>Student: Viplav Nagpal</h3>
 
             <div id="email" onclick="showhideEmail()">Show my email</div>
@@ -101,6 +104,8 @@
         <input name="data" onkeypress="console.log('You have presses a key')" id="data">
         
         <input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
+        <input class = "button round" type = "button" value ="JQuery Ajax GET Echo" onclick = "JQueryAjax()">
+        <input class = "button round" type = "button" value ="JQuery Ajax POST Echo" onclick = "JQueryAjaxPost()">
         
         <div id="response"></div>
         
@@ -122,6 +127,28 @@
                 xhttp.send();
                 document.getElementById('data').value="";
             }
+
+        	function JQueryAjax(){
+        		var input = $("#data").val();
+        		if(input.length == 0) return;
+        		$.get("echo.php?data="+input,
+        			function(result) {
+        				$("#response").html("response from server:" + result);
+        			}
+        		);
+        		$("data").val("");
+        	}
+
+        	function JQueryAjaxPost(){
+        		var input = $("#data").val();
+        		if(input.length == 0) return;
+        		$.post("echo.php", {data: input},
+        			function(result) {
+        				$("#response").html("response from server:" + result);
+        			}
+        		);
+        		$("data").val("");
+        	}
         </script>
     </div>
 
