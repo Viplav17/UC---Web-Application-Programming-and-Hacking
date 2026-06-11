@@ -15,7 +15,36 @@
 	<div id="menubar">
 		<h3>Student: Viplav Nagpal</h3>
 
+		<div id="email" onclick="showhideEmail()">Show my email</div>
+		<script src = "email.js"></script>
+
 		<img src="images/Headshot.jpeg" alt="My Headshot" width="50">
+
+		<div id="digit-clock"></div>
+		<script type=text/javascript>
+			function displayTime(){
+				document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
+			}
+			setInterval(displayTime, 500);
+		</script>
+
+		<canvas id="analog-clock" width="150" height="150" style="background-color: #999"></canvas>
+		<script src = "https://waph-phung.github.io/clock.js"></script>
+		<script>
+			var canvas = document.getElementById("analog-clock");
+			var ctx = canvas.getContext("2d");
+			var radius = canvas.height / 2;
+			ctx.translate(radius, radius);
+			radius = radius * 0.90;
+			setInterval(drawClock, 1000);
+
+			function drawClock(){
+				drawFace(ctx, radius);
+				drawNumbers(ctx, radius);
+				drawTime(ctx, radius);
+			}
+		</script>
+
 	</div>
 
 	<div id="main">
@@ -28,7 +57,7 @@
 		<div>
 			<i>Form with an HTTP GET Request</i>
 			<form action="/echo.php" method="GET">
-			 	Your input: <input name="data">
+			 	Your input: <input name="data" onkeypress='console.log("You have pressed a key")'>
 			 	<input type="submit" value="Submit">
 			</form>
 		</div>
@@ -36,12 +65,43 @@
 		<div>
 			<i>Form with an HTTP POST Request</i>
 			<form action="/echo.php" method="POST">
-			 	Your input: <input name="data">
+			 	Your input: <input name="data" onkeypress="console.log('You have pressed a key')">
 			 	<input type="submit" value="Submit">
 			</form>
 		</div>
+		<hr>
+		<b>Experiments with JavaScript code</b><br>
+		<i>Inlined JavaScript</i>
 
+		<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()
+		</div>
 
+		<hr>
+		<i>Ajax requests</i><br>
+		Your input:
+		<input name = "data"
+			   onkeypress="console.log('You have presses a key')" id = "data">
+		<input type = "button" value = "submit" onclick = "getEcho()">
+		<div id = "response"></div>
+		<script>
+			function getEcho(){
+				var input = document.getElementById("data").value;
+				if(input.length == 0){
+					return;
+				}
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200){
+						console.log("Received data="+xhttp.responseText);
+						document.getElementById("response").innerText = "Response from server:"+xhttp.responseText;
+					}
+				}
+				xhttp.open("GET","echo.php?data="+input, true);
+				xhttp.send();
+				document.getElementById('data').value="";
+			}
+		</script>
 	</div>
 
 </body>
