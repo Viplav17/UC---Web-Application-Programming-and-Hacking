@@ -1,108 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>WAPH-nagpalvv</title>
+    <meta charset="utf-8">
+    <title>WAPH-nagpalvv</title>
+    <link rel="stylesheet" href="https://waph-phung.github.io/style1.css">
+
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .round { border-radius: 8px; }
+        #response { background-color: #ff9800; } /* Orange */
+    </style>
 </head>
 <body>
 
-	<div id="top">
-		<h1>Web Application Programming and Hacking</h1>
-		<h2>Front-end Web Development Lab</h2>
-		<h3>Instructor: Dr. Phu Phung</h3>
-	</div>
+<div class="container wrapper">
 
-	<div id="menubar">
-		<h3>Student: Viplav Nagpal</h3>
+    <div id="top">
+        <h1>Web Application Programming and Hacking</h1>
+        <h2>Front-end Web Development Lab</h2>
+        <h3>Instructor: Dr. Phu Phung</h3>
+    </div>
 
-		<div id="email" onclick="showhideEmail()">Show my email</div>
-		<script src = "email.js"></script>
+    <div class="wrapper">
+        <div id="menubar">
+            <h3>Student: Viplav Nagpal</h3>
 
-		<img src="images/Headshot.jpeg" alt="My Headshot" width="50">
+            <div id="email" onclick="showhideEmail()">Show my email</div>
+            <script src="email.js"></script>
 
-		<div id="digit-clock"></div>
-		<script type=text/javascript>
-			function displayTime(){
-				document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
-			}
-			setInterval(displayTime, 500);
-		</script>
+            <img src="images/Headshot.jpeg" alt="My Headshot" width="50">
 
-		<canvas id="analog-clock" width="150" height="150" style="background-color: #999"></canvas>
-		<script src = "https://waph-phung.github.io/clock.js"></script>
-		<script>
-			var canvas = document.getElementById("analog-clock");
-			var ctx = canvas.getContext("2d");
-			var radius = canvas.height / 2;
-			ctx.translate(radius, radius);
-			radius = radius * 0.90;
-			setInterval(drawClock, 1000);
+            <div id="digit-clock"></div>
+            <script type="text/javascript">
+                function displayTime(){
+                    document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
+                }
+                setInterval(displayTime, 500);
+            </script>
 
-			function drawClock(){
-				drawFace(ctx, radius);
-				drawNumbers(ctx, radius);
-				drawTime(ctx, radius);
-			}
-		</script>
+            <canvas id="analog-clock" width="150" height="150" style="background-color: #999"></canvas>
+            <script src="https://waph-phung.github.io/clock.js"></script>
+            <script>
+                var canvas = document.getElementById("analog-clock");
+                var ctx = canvas.getContext("2d");
+                var radius = canvas.height / 2;
+                ctx.translate(radius, radius);
+                radius = radius * 0.90;
+                setInterval(drawClock, 1000);
 
-	</div>
+                function drawClock(){
+                    drawFace(ctx, radius);
+                    drawNumbers(ctx, radius);
+                    drawTime(ctx, radius);
+                }
+            </script>
+        </div>
+    </div>
 
-	<div id="main">
+    <div id="main">
+        <p>A simple HTML page </p>
+        Using the <a href="https://www.w3schools.com/html" target="_blank"> W3Schools template</a>
+        <hr>
+        <b>Interaction with forms</b>
 
-		<p>A simple HTML page </p>
-		Using the <a href="https://www.w3schools.com/html" target="_blank"> W3Schools template</a>
-		<hr>
-		<b>Interaction with forms</b>
+        <div>
+            <i>Form with an HTTP GET Request</i>
+            <form action="/echo.php" method="GET">
+                Your input: <input name="data" onkeypress='console.log("You have pressed a key")'>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
 
-		<div>
-			<i>Form with an HTTP GET Request</i>
-			<form action="/echo.php" method="GET">
-			 	Your input: <input name="data" onkeypress='console.log("You have pressed a key")'>
-			 	<input type="submit" value="Submit">
-			</form>
-		</div>
+        <div>
+            <i>Form with an HTTP POST Request</i>
+            <form action="/echo.php" method="POST">
+                Your input: <input name="data" onkeypress="console.log('You have pressed a key')">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <hr>
+        <b>Experiments with JavaScript code</b><br>
+        <i>Inlined JavaScript</i>
 
-		<div>
-			<i>Form with an HTTP POST Request</i>
-			<form action="/echo.php" method="POST">
-			 	Your input: <input name="data" onkeypress="console.log('You have pressed a key')">
-			 	<input type="submit" value="Submit">
-			</form>
-		</div>
-		<hr>
-		<b>Experiments with JavaScript code</b><br>
-		<i>Inlined JavaScript</i>
+        <div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()</div>
 
-		<div id="date" onclick="document.getElementById('date').innerHTML = Date()">Click here to show Date()
-		</div>
+        <hr>
+        <i>Ajax requests</i><br>
+        Your input:
+        <input name="data" onkeypress="console.log('You have presses a key')" id="data">
+        
+        <input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
+        
+        <div id="response"></div>
+        
+        <script>
+            function getEcho(){
+                var input = document.getElementById("data").value;
+                if(input.length == 0){
+                    return;
+                }
 
-		<hr>
-		<i>Ajax requests</i><br>
-		Your input:
-		<input name = "data"
-			   onkeypress="console.log('You have presses a key')" id = "data">
-		<input type = "button" value = "submit" onclick = "getEcho()">
-		<div id = "response"></div>
-		<script>
-			function getEcho(){
-				var input = document.getElementById("data").value;
-				if(input.length == 0){
-					return;
-				}
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200){
+                        console.log("Received data="+xhttp.responseText);
+                        document.getElementById("response").innerText = "Response from server:"+xhttp.responseText;
+                    }
+                }
+                xhttp.open("GET","echo.php?data="+input, true);
+                xhttp.send();
+                document.getElementById('data').value="";
+            }
+        </script>
+    </div>
 
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if(this.readyState == 4 && this.status == 200){
-						console.log("Received data="+xhttp.responseText);
-						document.getElementById("response").innerText = "Response from server:"+xhttp.responseText;
-					}
-				}
-				xhttp.open("GET","echo.php?data="+input, true);
-				xhttp.send();
-				document.getElementById('data').value="";
-			}
-		</script>
-	</div>
+</div>
 
 </body>
 </html>
