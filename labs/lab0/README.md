@@ -12,7 +12,7 @@
 
 **Short-bio**: I love programming and building stuff. I took this course to learn how to build stuff and add security for the stuff I build, including websites, machine learning models and so much more.
 
-![Viplav's headshot](../../Images-main/Headshot.jpeg)
+![Viplav's headshot](../../Images-main/headshot.jpeg)
 
 # Lab 0 - Development Environment Setup
 

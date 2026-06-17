@@ -11,7 +11,7 @@
 
 **Short-bio**: I love programming and building stuff. I took this course to learn how to build stuff and add security for the stuff I build, including websites, machine learning models and so much more.
 
-![Viplav's headshot](Images-main/Headshot.jpeg)
+![Viplav's headshot](Images-main/headshot.jpeg)
 
 ## Repository Information
 
@@ -28,6 +28,8 @@ This is a private repository for Viplav Nagpal to store all code from the course
 ### Hackations
 
 Hands-on hacking exercises
+
+  - [Hackathon 1](labs/Hackathon-1): Cross-site Scripting Attacks and Defenses
 
 ### Individual Projects
 
